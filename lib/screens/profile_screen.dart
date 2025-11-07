@@ -34,11 +34,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final db = DatabaseService.instance;
 
     final totalProverbs = await db.getProverbCount();
-    final favoriteProverbs = await db.getFavoriteProverbsCount();
+    final totalFavorites = await db.getTotalFavoritesCount();
     final quizResults = await db.getAllQuizResults();
-    // TODO: Add photo quiz results from database when available
-    // For now using placeholder
-    final photoQuizResults = <dynamic>[];  // Will be populated later
+    final photoQuizResults = await db.getAllPhotoQuizResults();
 
     // Count total photo quiz images
     final allPhotoItems = PhotoQuizData.getAllItems();
@@ -54,20 +52,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
       totalQuizCount++;
     }
 
-    // Add photo quiz scores (when available)
-    // for (var result in photoQuizResults) {
-    //   totalScore += ((result.correctAnswers / result.totalQuestions) * 100).round();
-    //   totalQuizCount++;
-    // }
+    // Add photo quiz scores
+    for (var result in photoQuizResults) {
+      final correctAnswers = result['correctAnswers'] as int;
+      final totalQuestions = result['totalQuestions'] as int;
+      totalScore += ((correctAnswers / totalQuestions) * 100).round();
+      totalQuizCount++;
+    }
 
     // Calculate level and experience based on total activities
-    final totalActivities = quizResults.length + photoQuizResults.length + favoriteProverbs;
+    final totalActivities = quizResults.length + photoQuizResults.length + totalFavorites;
     String currentLevel = _calculateLevel(totalActivities);
     double experienceProgress = _calculateExperienceProgress(totalActivities);
 
     setState(() {
       _totalProverbs = totalProverbs;
-      _favoriteProverbs = favoriteProverbs;
+      _favoriteProverbs = totalFavorites;
       _quizzesTaken = quizResults.length;
       _photoQuizzesTaken = photoQuizResults.length;
       _totalQuizzes = totalQuizCount;

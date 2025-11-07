@@ -22,7 +22,7 @@ class DatabaseService {
 
     return await openDatabase(
       path,
-      version: 2,
+      version: 3,
       onCreate: _createDB,
       onUpgrade: _upgradeDB,
     );
@@ -34,6 +34,36 @@ class DatabaseService {
       await db.execute('CREATE INDEX IF NOT EXISTS idx_proverbs_firstLetter ON proverbs(firstLetter)');
       await db.execute('CREATE INDEX IF NOT EXISTS idx_proverbs_isFavorite ON proverbs(isFavorite)');
       await db.execute('CREATE INDEX IF NOT EXISTS idx_proverbs_difficulty ON proverbs(difficulty)');
+    }
+
+    if (oldVersion < 3) {
+      // Add new tables for photo quiz results and favorite images
+      const idType = 'INTEGER PRIMARY KEY AUTOINCREMENT';
+      const textType = 'TEXT NOT NULL';
+      const intType = 'INTEGER NOT NULL';
+
+      await db.execute('''
+        CREATE TABLE IF NOT EXISTS photo_quiz_results (
+          id $idType,
+          category $textType,
+          totalQuestions $intType,
+          correctAnswers $intType,
+          timeSpent $intType,
+          completedAt $textType
+        )
+      ''');
+
+      await db.execute('''
+        CREATE TABLE IF NOT EXISTS favorite_images (
+          id $idType,
+          itemId $intType,
+          category $textType,
+          hausaName $textType,
+          englishName $textType,
+          imagePath $textType,
+          addedAt $textType
+        )
+      ''');
     }
   }
 
@@ -73,6 +103,31 @@ class DatabaseService {
         timeSpent $intType,
         difficulty $textType,
         completedAt $textType
+      )
+    ''');
+
+    // Photo quiz results table
+    await db.execute('''
+      CREATE TABLE photo_quiz_results (
+        id $idType,
+        category $textType,
+        totalQuestions $intType,
+        correctAnswers $intType,
+        timeSpent $intType,
+        completedAt $textType
+      )
+    ''');
+
+    // Favorite images table
+    await db.execute('''
+      CREATE TABLE favorite_images (
+        id $idType,
+        itemId $intType,
+        category $textType,
+        hausaName $textType,
+        englishName $textType,
+        imagePath $textType,
+        addedAt $textType
       )
     ''');
 
@@ -232,12 +287,81 @@ class DatabaseService {
     return null;
   }
 
+  // PHOTO QUIZ RESULTS OPERATIONS
+
+  Future<int> insertPhotoQuizResult(Map<String, dynamic> result) async {
+    final db = await database;
+    return await db.insert('photo_quiz_results', result);
+  }
+
+  Future<List<Map<String, dynamic>>> getAllPhotoQuizResults() async {
+    final db = await database;
+    return await db.query(
+      'photo_quiz_results',
+      orderBy: 'completedAt DESC',
+    );
+  }
+
+  Future<int> getPhotoQuizResultsCount() async {
+    final db = await database;
+    final result = await db.rawQuery('SELECT COUNT(*) as count FROM photo_quiz_results');
+    return Sqflite.firstIntValue(result) ?? 0;
+  }
+
+  // FAVORITE IMAGES OPERATIONS
+
+  Future<int> addFavoriteImage(Map<String, dynamic> image) async {
+    final db = await database;
+    return await db.insert('favorite_images', image);
+  }
+
+  Future<int> removeFavoriteImage(int itemId) async {
+    final db = await database;
+    return await db.delete(
+      'favorite_images',
+      where: 'itemId = ?',
+      whereArgs: [itemId],
+    );
+  }
+
+  Future<bool> isImageFavorite(int itemId) async {
+    final db = await database;
+    final result = await db.query(
+      'favorite_images',
+      where: 'itemId = ?',
+      whereArgs: [itemId],
+    );
+    return result.isNotEmpty;
+  }
+
+  Future<List<Map<String, dynamic>>> getAllFavoriteImages() async {
+    final db = await database;
+    return await db.query(
+      'favorite_images',
+      orderBy: 'addedAt DESC',
+    );
+  }
+
+  Future<int> getFavoriteImagesCount() async {
+    final db = await database;
+    final result = await db.rawQuery('SELECT COUNT(*) as count FROM favorite_images');
+    return Sqflite.firstIntValue(result) ?? 0;
+  }
+
+  Future<int> getTotalFavoritesCount() async {
+    final favoriteProverbs = await getFavoriteProverbsCount();
+    final favoriteImages = await getFavoriteImagesCount();
+    return favoriteProverbs + favoriteImages;
+  }
+
   // UTILITY
 
   Future<void> clearAllData() async {
     final db = await database;
     await db.delete('proverbs');
     await db.delete('quiz_results');
+    await db.delete('photo_quiz_results');
+    await db.delete('favorite_images');
     await db.delete('preferences');
   }
 

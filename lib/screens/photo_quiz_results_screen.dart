@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../models/photo_quiz_model.dart';
 import '../services/photo_quiz_service.dart';
+import '../services/database_service.dart';
 import 'photo_quiz_game_screen.dart';
 
 class PhotoQuizResultsScreen extends StatefulWidget {
@@ -50,6 +51,24 @@ class _PhotoQuizResultsScreenState extends State<PhotoQuizResultsScreen>
     );
 
     _controller.forward();
+
+    // Save photo quiz result to database
+    _saveResultToDatabase();
+  }
+
+  Future<void> _saveResultToDatabase() async {
+    try {
+      await DatabaseService.instance.insertPhotoQuizResult({
+        'category': widget.result.category,
+        'totalQuestions': widget.result.totalQuestions,
+        'correctAnswers': widget.result.correctAnswers,
+        'timeSpent': widget.result.timeSpent,
+        'completedAt': DateTime.now().toIso8601String(),
+      });
+    } catch (e) {
+      // Silently fail - don't disrupt user experience
+      debugPrint('Failed to save photo quiz result: $e');
+    }
   }
 
   @override

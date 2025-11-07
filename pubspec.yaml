@@ -54,7 +54,7 @@ flutter:
     - assets/images/traditional/
     - assets/images/plants/
 
-flutter_launcher_icons:
-  android: true
-  ios: true
-  image_path: "assets/images/app_icon.png"
+# flutter_launcher_icons:
+#   android: true
+#   ios: true
+#   image_path: "assets/images/app_icon.png"

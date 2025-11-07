@@ -5,6 +5,7 @@ import 'proverbs_library_screen.dart';
 import 'quiz_screen.dart';
 import 'photo_quiz_screen.dart';
 import 'profile_screen.dart';
+import 'runbun_hotuna_screen.dart';
 import '../services/database_service.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -289,14 +290,16 @@ class _HomePageState extends State<HomePage> {
                 ),
                 _buildActionCard(
                   context,
-                  icon: Icons.favorite,
-                  title: 'Abubuwan da na fi so',
-                  subtitle: 'Karin magana da ka adana',
-                  color: Colors.red,
+                  icon: Icons.collections,
+                  title: 'Runbun Hotuna',
+                  subtitle: 'Hotuna da karin magana',
+                  color: Colors.purple,
                   onTap: () {
-                    // TODO: Navigate to favorites
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text('Wannan yana zuwa nan gaba!')),
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const RunbunHotunaScreen(),
+                      ),
                     );
                   },
                 ),

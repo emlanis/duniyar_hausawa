@@ -531,62 +531,42 @@ class _PhotoQuizGameScreenState extends State<PhotoQuizGameScreen> with TickerPr
 
   // Build image with multiple format fallbacks
   Widget _buildImageWithFallback(String imagePath) {
+    // imagePath already contains full path like 'assets/images/animals/ram.jpg'
     return Image.asset(
-      'assets/images/$imagePath.jpg',
+      imagePath,
       fit: BoxFit.cover,
       errorBuilder: (context, error, stackTrace) {
-        // Try .jpeg
-        return Image.asset(
-          'assets/images/$imagePath.jpeg',
-          fit: BoxFit.cover,
-          errorBuilder: (context, error, stackTrace) {
-            // Try .png
-            return Image.asset(
-              'assets/images/$imagePath.png',
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) {
-                // Try .webp
-                return Image.asset(
-                  'assets/images/$imagePath.webp',
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) {
-                    // Ultimate fallback to category icon
-                    return Container(
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            Color(widget.category.color).withValues(alpha: 0.3),
-                            Color(widget.category.color).withValues(alpha: 0.1),
-                          ],
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                        ),
-                      ),
-                      child: Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              widget.category.icon,
-                              style: const TextStyle(fontSize: 120),
-                            ),
-                            const SizedBox(height: 8),
-                            const Text(
-                              'Hoton ba ya samuwa',
-                              style: TextStyle(
-                                color: Colors.white70,
-                                fontSize: 14,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  },
-                );
-              },
-            );
-          },
+        // If the main path fails, show fallback
+        return Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color(widget.category.color).withValues(alpha: 0.3),
+                Color(widget.category.color).withValues(alpha: 0.1),
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  widget.category.icon,
+                  style: const TextStyle(fontSize: 120),
+                ),
+                const SizedBox(height: 8),
+                const Text(
+                  'Hoton ba ya samuwa',
+                  style: TextStyle(
+                    color: Colors.white70,
+                    fontSize: 14,
+                  ),
+                ),
+              ],
+            ),
+          ),
         );
       },
     );

@@ -3,7 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../services/database_service.dart';
+import '../services/notification_service.dart';
 import '../data/photo_quiz_data.dart';
+import 'privacy_policy_screen.dart';
+import 'quiz_history_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -28,6 +31,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
   void initState() {
     super.initState();
     _loadUserStats();
+    _loadNotificationStatus();
+  }
+
+  Future<void> _loadNotificationStatus() async {
+    final notificationService = NotificationService();
+    final enabled = await notificationService.areNotificationsEnabled();
+    setState(() {
+      _notificationsEnabled = enabled;
+    });
   }
 
   Future<void> _loadUserStats() async {
@@ -350,10 +362,55 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           subtitle: const Text('Karɓi sanarwar yau da kullun'),
                           value: _notificationsEnabled,
                           activeThumbColor: Theme.of(context).primaryColor,
-                          onChanged: (value) {
-                            setState(() {
-                              _notificationsEnabled = value;
-                            });
+                          onChanged: (value) async {
+                            final notificationService = NotificationService();
+
+                            if (value) {
+                              // Request permissions first
+                              final granted = await notificationService.requestPermissions();
+
+                              if (granted) {
+                                await notificationService.enableNotifications();
+                                setState(() {
+                                  _notificationsEnabled = true;
+                                });
+
+                                if (mounted) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                      content: Text('✅ Sanarwa ta kunna! Daily notifications enabled!'),
+                                      backgroundColor: Colors.green,
+                                      duration: Duration(seconds: 3),
+                                    ),
+                                  );
+                                }
+
+                                // Send test notification
+                                await notificationService.sendTestNotification();
+                              } else {
+                                if (mounted) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(
+                                      content: Text('⚠️ Izini ba a bayar ba. Permission denied.'),
+                                      backgroundColor: Colors.orange,
+                                    ),
+                                  );
+                                }
+                              }
+                            } else {
+                              await notificationService.disableNotifications();
+                              setState(() {
+                                _notificationsEnabled = false;
+                              });
+
+                              if (mounted) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text('🔕 Sanarwa ta kashe. Notifications disabled.'),
+                                  ),
+                                );
+                              }
+                            }
                           },
                         ),
                         const Divider(height: 1),
@@ -395,6 +452,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     child: Column(
                       children: [
                         ListTile(
+                          leading: const Icon(Icons.history, color: Colors.purple),
+                          title: const Text('Tarihin Gwaje-gwaje'),
+                          subtitle: const Text('Duba sakamakon gwaje-gwaje'),
+                          trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const QuizHistoryScreen(),
+                              ),
+                            );
+                          },
+                        ),
+                        const Divider(height: 1),
+                        ListTile(
                           leading: Icon(Icons.info, color: Theme.of(context).primaryColor),
                           title: const Text('Game da Duniyar Hausawa'),
                           trailing: const Icon(Icons.arrow_forward_ios, size: 16),
@@ -430,6 +502,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           subtitle: const Text('Tuntube mu'),
                           trailing: const Icon(Icons.arrow_forward_ios, size: 16),
                           onTap: () => _sendFeedback(context),
+                        ),
+                        const Divider(height: 1),
+                        ListTile(
+                          leading: const Icon(Icons.privacy_tip, color: Colors.blue),
+                          title: const Text('Tsarin Sirri'),
+                          subtitle: const Text('Privacy Policy'),
+                          trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+                          onTap: () => _showPrivacyPolicy(context),
                         ),
                       ],
                     ),
@@ -732,6 +812,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: const Text('Kwafi Email'),
           ),
         ],
+      ),
+    );
+  }
+
+  void _showPrivacyPolicy(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const PrivacyPolicyScreen(),
       ),
     );
   }

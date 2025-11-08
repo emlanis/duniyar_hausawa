@@ -1,6 +1,7 @@
 // lib/screens/home_screen.dart
 
 import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
 import 'proverbs_library_screen.dart';
 import 'quiz_screen.dart';
 import 'photo_quiz_screen.dart';
@@ -96,7 +97,13 @@ class _HomePageState extends State<HomePage> {
           IconButton(
             icon: const Icon(Icons.notifications_outlined),
             onPressed: () {
-              // TODO: Show notifications
+              // Navigate to Profile screen where notification settings are
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ProfileScreen(),
+                ),
+              );
             },
           ),
         ],
@@ -213,10 +220,16 @@ class _HomePageState extends State<HomePage> {
                       const SizedBox(height: 12),
                       ElevatedButton.icon(
                         onPressed: () {
-                          // TODO: Share proverb
+                          // Share proverb using share_plus
+                          if (_todayProverb.isNotEmpty) {
+                            Share.share(
+                              'Karin Magana ta Yau:\n\n$_todayProverb\n\n- Duniyar Hausawa',
+                              subject: 'Karin Magana ta Yau',
+                            );
+                          }
                         },
                         icon: const Icon(Icons.share, size: 18),
-                        label: const Text('Raba', style: TextStyle(fontWeight: FontWeight.bold)),
+                        label: const Text('Aika', style: TextStyle(fontWeight: FontWeight.bold)),
                         style: ElevatedButton.styleFrom(
                           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                         ),

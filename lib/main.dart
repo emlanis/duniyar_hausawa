@@ -3,9 +3,18 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'screens/splash_screen.dart';
+import 'services/notification_service.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Initialize notifications
+  final notificationService = NotificationService();
+  await notificationService.initialize();
+
+  // Mark today as visited (for streak tracking)
+  await notificationService.markTodayAsVisited();
+
   runApp(const DuniyarHausawaApp());
 }
 

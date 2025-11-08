@@ -27,6 +27,10 @@ dependencies:
 
   # Notifications
   flutter_local_notifications: ^17.2.3
+  timezone: ^0.9.4
+
+  # Share
+  share_plus: ^7.2.1
 
   # Animations
   lottie: ^3.0.0
@@ -54,7 +58,11 @@ flutter:
     - assets/images/traditional/
     - assets/images/plants/
 
-# flutter_launcher_icons:
-#   android: true
-#   ios: true
-#   image_path: "assets/images/app_icon.png"
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/app_icon.png"
+  remove_alpha_ios: true
+  # Adaptive icon for Android
+  adaptive_icon_background: "#FFFFFF"
+  adaptive_icon_foreground: "assets/images/app_icon.png"

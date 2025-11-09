@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import '../models/photo_quiz_model.dart';
 import '../services/photo_quiz_service.dart';
 import '../services/database_service.dart';
+import '../services/leaderboard_service.dart';
 import 'photo_quiz_game_screen.dart';
 
 class PhotoQuizResultsScreen extends StatefulWidget {
@@ -65,6 +66,9 @@ class _PhotoQuizResultsScreenState extends State<PhotoQuizResultsScreen>
         'timeSpent': widget.result.timeSpent,
         'completedAt': DateTime.now().toIso8601String(),
       });
+
+      // Sync to leaderboard (non-blocking)
+      LeaderboardService().syncFromLocalDatabase();
     } catch (e) {
       // Silently fail - don't disrupt user experience
       debugPrint('Failed to save photo quiz result: $e');

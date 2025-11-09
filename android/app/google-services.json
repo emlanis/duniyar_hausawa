@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "897161998123",
+    "project_id": "duniyar-hausawa",
+    "storage_bucket": "duniyar-hausawa.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:897161998123:android:52c85184962dbdf8f5df6e",
+        "android_client_info": {
+          "package_name": "com.example.duniyar_hausawa"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTcxWmGleskjW94fZwTTnokmYtg7teXQk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,3 +1,10 @@
+buildscript {
+    dependencies {
+        // Add the Google services Gradle plugin
+        classpath("com.google.gms:google-services:4.4.4")
+    }
+}
+
 allprojects {
     repositories {
         google()

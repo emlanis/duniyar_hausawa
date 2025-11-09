@@ -8,6 +8,7 @@ import 'package:audioplayers/audioplayers.dart';
 import '../models/proverb_model.dart';
 import '../services/quiz_service.dart';
 import '../services/database_service.dart';
+import '../services/leaderboard_service.dart';
 import 'quiz_results_screen.dart';
 
 class QuizGameScreen extends StatefulWidget {
@@ -236,6 +237,9 @@ class _QuizGameScreenState extends State<QuizGameScreen> with TickerProviderStat
     );
 
     DatabaseService.instance.insertQuizResult(result);
+
+    // Sync to leaderboard (non-blocking)
+    LeaderboardService().syncFromLocalDatabase();
 
     // Navigate to results screen
     Navigator.pushReplacement(

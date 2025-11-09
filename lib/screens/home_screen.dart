@@ -7,6 +7,7 @@ import 'quiz_screen.dart';
 import 'photo_quiz_screen.dart';
 import 'profile_screen.dart';
 import 'runbun_hotuna_screen.dart';
+import 'leaderboard_screen.dart';
 import '../services/database_service.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -312,6 +313,21 @@ class _HomePageState extends State<HomePage> {
                       context,
                       MaterialPageRoute(
                         builder: (context) => const RunbunHotunaScreen(),
+                      ),
+                    );
+                  },
+                ),
+                _buildActionCard(
+                  context,
+                  icon: Icons.emoji_events,
+                  title: 'Gasar Gwaji',
+                  subtitle: 'Duba matsayinka',
+                  color: const Color(0xFFFFB300), // Gold/Yellow
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const LeaderboardScreen(),
                       ),
                     );
                   },

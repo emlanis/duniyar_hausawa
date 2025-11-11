@@ -58,7 +58,7 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
                 if (mounted) {
                   Navigator.pop(context);
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('An saita sunan ka!')),
+                    const SnackBar(content: Text('An aje sunan!')),
                   );
                 }
               }
@@ -74,12 +74,12 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Gasar Gwaji'),
+        title: const Text('Teburin Gwanaye'),
         actions: [
           IconButton(
             icon: const Icon(Icons.edit),
             onPressed: _showUsernameDialog,
-            tooltip: 'Saita Suna',
+            tooltip: 'Aje Suna',
           ),
         ],
       ),
@@ -120,12 +120,12 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
                   const Icon(Icons.emoji_events_outlined, size: 64, color: Colors.grey),
                   const SizedBox(height: 16),
                   const Text(
-                    'Babu wanda ya shiga gwaji tukuna!',
+                    'Har yanzu ba\'a fafata a gasar tambayoyi ba!',
                     style: TextStyle(fontSize: 18),
                   ),
                   const SizedBox(height: 8),
                   const Text(
-                    'Ka fara wasa don ka kasance na farko!',
+                    'Fara shiga gasar dan yin na farko',
                     style: TextStyle(color: Colors.grey),
                   ),
                 ],
@@ -315,7 +315,7 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
       child: Column(
         children: [
           const Text(
-            'Matsayinka',
+            'Matsayina',
             style: TextStyle(
               color: Colors.black,
               fontSize: 16,
@@ -369,7 +369,7 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
                     ),
                   ),
                   const Text(
-                    'Gwaji',
+                    'Kacici-kacici',
                     style: TextStyle(color: Colors.black87, fontSize: 12),
                   ),
                 ],
@@ -428,7 +428,7 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
           fontWeight: isCurrentUser ? FontWeight.bold : FontWeight.normal,
         ),
       ),
-      subtitle: Text('${entry.level} • ${entry.totalQuizzes} gwaji'),
+      subtitle: Text('${entry.level} • ${entry.totalQuizzes} kacici-kacici'),
       trailing: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.end,

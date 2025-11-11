@@ -133,7 +133,7 @@ class _HomePageState extends State<HomePage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Barka Da Zuwa Duniyar Hausawa 👋',
+                      'Barka Da Zuwa Duniyar Hausawa',
                       style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
@@ -141,7 +141,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      'Kasance Cikin Murmushi Ako Da Yaushe ⚡️😊',
+                      'Kasance Cikin Murmushi Ako Da Yaushe',
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         color: Colors.black87,
                         fontWeight: FontWeight.bold,
@@ -225,12 +225,12 @@ class _HomePageState extends State<HomePage> {
                           if (_todayProverb.isNotEmpty) {
                             Share.share(
                               'Karin Magana ta Yau:\n\n$_todayProverb\n\n- Duniyar Hausawa',
-                              subject: 'Karin Magana ta Yau',
+                              subject: 'Karin Maganar Yau',
                             );
                           }
                         },
                         icon: const Icon(Icons.share, size: 18),
-                        label: const Text('Aika', style: TextStyle(fontWeight: FontWeight.bold)),
+                        label: const Text('Aikaa', style: TextStyle(fontWeight: FontWeight.bold)),
                         style: ElevatedButton.styleFrom(
                           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                         ),
@@ -244,7 +244,7 @@ class _HomePageState extends State<HomePage> {
 
             // Quick Actions
             Text(
-              'Me kake son yi?',
+              'Wane ɓangare kake son shiga?',
               style: Theme.of(context).textTheme.titleLarge,
             ),
             const SizedBox(height: 12),
@@ -260,8 +260,8 @@ class _HomePageState extends State<HomePage> {
                 _buildActionCard(
                   context,
                   icon: Icons.book,
-                  title: 'Karin Magana',
-                  subtitle: 'Duba dukkan karin magana',
+                  title: 'Runbun Karin Magana',
+                  subtitle: 'Duba duk karin maganar da ke a manhaja',
                   color: Colors.green,
                   onTap: () {
                     Navigator.push(
@@ -276,7 +276,7 @@ class _HomePageState extends State<HomePage> {
                   context,
                   icon: Icons.quiz,
                   title: 'Kacici-Kacici',
-                  subtitle: 'Yi gwajin karin magana',
+                  subtitle: 'Shiga kacici-kacicin karin magana',
                   color: Colors.orange,
                   onTap: () {
                     Navigator.push(
@@ -291,7 +291,7 @@ class _HomePageState extends State<HomePage> {
                   context,
                   icon: Icons.photo_library,
                   title: 'Hotuna',
-                  subtitle: 'Kacici-kacicin hotuna',
+                  subtitle: 'Shiga kacici-kacicin hotuna',
                   color: Colors.blue,
                   onTap: () {
                     Navigator.push(
@@ -320,8 +320,8 @@ class _HomePageState extends State<HomePage> {
                 _buildActionCard(
                   context,
                   icon: Icons.emoji_events,
-                  title: 'Gasar Gwaji',
-                  subtitle: 'Duba matsayinka',
+                  title: 'Gasar Kacici-kacici',
+                  subtitle: 'Duba matsayi da ƙwazo',
                   color: const Color(0xFFFFB300), // Gold/Yellow
                   onTap: () {
                     Navigator.push(

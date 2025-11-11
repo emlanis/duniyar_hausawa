@@ -213,7 +213,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       const Text(
-                                        'Matsayinka',
+                                        'Matsayina',
                                         style: TextStyle(
                                           fontSize: 12,
                                           color: Colors.grey,
@@ -286,7 +286,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       Expanded(
                         child: _buildStatCard(
                           icon: Icons.favorite,
-                          label: 'Abubuwa da na fi so',
+                          label: 'Karin Magana da hotunan da na fi so',
                           value: '$_favoriteProverbs',
                           color: Colors.red,
                         ),
@@ -295,7 +295,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       Expanded(
                         child: _buildStatCard(
                           icon: Icons.quiz,
-                          label: 'Gwaje-gwaje',
+                          label: 'Yawan Kacici-kacici',
                           value: '$_totalQuizzes',
                           color: Theme.of(context).colorScheme.secondary,
                         ),
@@ -378,7 +378,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 if (mounted) {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     const SnackBar(
-                                      content: Text('✅ Sanarwa ta kunna! Daily notifications enabled!'),
+                                      content: Text('✅ In sha Allah za\'a dinga samun sanarwa akai-akai!'),
                                       backgroundColor: Colors.green,
                                       duration: Duration(seconds: 3),
                                     ),
@@ -391,7 +391,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 if (mounted) {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     const SnackBar(
-                                      content: Text('⚠️ Izini ba a bayar ba. Permission denied.'),
+                                      content: Text('⚠️ Ba\'a bayar da azini ba! Permission denied.'),
                                       backgroundColor: Colors.orange,
                                     ),
                                   );
@@ -406,7 +406,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               if (mounted) {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
-                                    content: Text('🔕 Sanarwa ta kashe. Notifications disabled.'),
+                                    content: Text('🔕 Ah! Ah! Ba za\'a dinga samun sanarwa ba! Ba haka mukai da ku ba!'),
                                   ),
                                 );
                               }
@@ -453,8 +453,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       children: [
                         ListTile(
                           leading: const Icon(Icons.history, color: Colors.purple),
-                          title: const Text('Tarihin Gwaje-gwaje'),
-                          subtitle: const Text('Duba sakamakon gwaje-gwaje'),
+                          title: const Text('Tarihin Kacici-kacici'),
+                          subtitle: const Text('Duba sakamakon kacici-kacici'),
                           trailing: const Icon(Icons.arrow_forward_ios, size: 16),
                           onTap: () {
                             Navigator.push(
@@ -476,7 +476,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ListTile(
                           leading: Icon(Icons.emoji_events, color: Theme.of(context).colorScheme.secondary),
                           title: const Text('Al\'adun Hausawa'),
-                          subtitle: const Text('Koyi game da al\'adun Hausawa'),
+                          subtitle: const Text('Koyi wani abu game da al\'adun Hausawa'),
                           trailing: const Icon(Icons.arrow_forward_ios, size: 16),
                           onTap: () => _showCultureInfo(context),
                         ),
@@ -490,15 +490,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         const Divider(height: 1),
                         ListTile(
                           leading: const Icon(Icons.star, color: Colors.amber),
-                          title: const Text('Bamu Maki'),
-                          subtitle: const Text('Bayyana ra\'ayinka game da manhaja'),
+                          title: const Text('Ɗaga Darajarmu'),
+                          subtitle: const Text('Bamu maki sannan bayyana ra\'ayinku game da manhajar Duniyar Hausawa'),
                           trailing: const Icon(Icons.arrow_forward_ios, size: 16),
                           onTap: () => _rateApp(),
                         ),
                         const Divider(height: 1),
                         ListTile(
                           leading: const Icon(Icons.feedback, color: Colors.orange),
-                          title: const Text('Aika Sako'),
+                          title: const Text('Aika Saƙo'),
                           subtitle: const Text('Tuntube mu'),
                           trailing: const Icon(Icons.arrow_forward_ios, size: 16),
                           onTap: () => _sendFeedback(context),
@@ -506,7 +506,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         const Divider(height: 1),
                         ListTile(
                           leading: const Icon(Icons.privacy_tip, color: Colors.blue),
-                          title: const Text('Tsarin Sirri'),
+                          title: const Text('Tsarin Aje Sirrikanku'),
                           subtitle: const Text('Privacy Policy'),
                           trailing: const Icon(Icons.arrow_forward_ios, size: 16),
                           onTap: () => _showPrivacyPolicy(context),
@@ -536,7 +536,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          'Sigar 1.0.0',
+                          'Siga ta 1.0.0',
                           style: TextStyle(
                             color: Colors.grey[400],
                           ),
@@ -551,7 +551,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          'An gina da ❤️ don kare martabar al\'adun Hausawa',
+                          'An ƙirƙiro manhajar DH ne saboda ƙaunar yaren Hausa da kuma kare martabar al\'adun Hausawa ❤️',
                           style: TextStyle(
                             fontSize: 12,
                             color: Colors.grey[500],
@@ -632,13 +632,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 style: TextStyle(fontWeight: FontWeight.w600),
               ),
               const SizedBox(height: 12),
-              _buildBulletPoint('Karin maganar Hausa sama da 2,000'),
+              _buildBulletPoint('Karin maganar Hausa sama da 2000'),
               _buildBulletPoint('Ƙayataccen Kacici-kacici'),
               _buildBulletPoint('Hotuna da bayanai kan al\'adun Hausawa'),
               _buildBulletPoint('Damar ajiye abubuwan da kuka fi so'),
               const SizedBox(height: 12),
               const Text(
-                'Manufar mu ita ce kare, tunatarwa, da inganta sanin al\'adun Hausawa ga kowane mutum.',
+                'Manufar mu ita ce kare tunatarwa da inganta sanin al\'adun Hausawa ga kowane mutum.',
                 style: TextStyle(fontStyle: FontStyle.italic),
               ),
             ],
@@ -689,7 +689,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               _buildBulletPoint('Sauyin zamani: Daga al\'adun da zuwa na yanzu'),
               const SizedBox(height: 12),
               const Text(
-                'Karin magana muhimman fanni ne na al\'ada da  ilimi dan ƙoyon hikima, ɗabi\'a, da fasahar rayuwa.',
+                'Karin magana muhimman fanni ne na al\'ada da  ilimi dan ƙoyon hikima ɗabi\'a da fasahar rayuwa.',
                 style: TextStyle(fontStyle: FontStyle.italic),
               ),
             ],
@@ -756,7 +756,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Bamu Maki'),
+        title: const Text('Ɗaga Darajarmu!'),
         content: const Text(
           'Ka yi amfani da Duniyar Hausawa?\n\nMuna so mu san ra\'ayinka! Bamu maki a cikin runbun manhaja wato app store.',
         ),
@@ -770,7 +770,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               Navigator.pop(context);
               // TODO: Open app store
             },
-            child: const Text('Bamu Maki'),
+            child: const Text('Ɗaga Darajarmu!'),
           ),
         ],
       ),
@@ -781,12 +781,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Aika Saƙo'),
+        title: const Text('Tura Saƙo'),
         content: const Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Zamu so muji daga gareka!'),
+            Text('Zamu so muji daga gareku!'),
             SizedBox(height: 12),
             Text('Tuntuɓe mu ta:'),
             SizedBox(height: 8),
@@ -806,7 +806,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               const email = 'hausatrends12@gmail.com';
               Clipboard.setData(const ClipboardData(text: email));
               ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('An kwafi adireshin email!')),
+                const SnackBar(content: Text('Adireshin email ya kwafu da kyau!')),
               );
             },
             child: const Text('Kwafi Email'),

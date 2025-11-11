@@ -25,7 +25,7 @@ class QuizScreen extends StatelessWidget {
             ),
             const SizedBox(height: 24),
             Text(
-              'Gwajin Karin Magana',
+              'Kacici-Kacicin Karin Magana',
               style: Theme.of(context).textTheme.displayMedium,
               textAlign: TextAlign.center,
             ),
@@ -42,7 +42,7 @@ class QuizScreen extends StatelessWidget {
             // Quick Quiz Options
             _buildQuizOptionCard(
               context,
-              title: 'Gwaji Mai Sauri',
+              title: 'Kacici-Kacici Mai Sauri',
               subtitle: 'Tambayoyi 5',
               icon: Icons.flash_on,
               color: Theme.of(context).primaryColor, // Yellow
@@ -59,7 +59,7 @@ class QuizScreen extends StatelessWidget {
 
             _buildQuizOptionCard(
               context,
-              title: 'Gwaji Matsakaici',
+              title: 'Kacici-Kacici Matsakaici',
               subtitle: 'Tambayoyi 10',
               icon: Icons.sports_score,
               color: Theme.of(context).colorScheme.secondary, // Light green
@@ -76,7 +76,7 @@ class QuizScreen extends StatelessWidget {
 
             _buildQuizOptionCard(
               context,
-              title: 'Gwaji Mai Tsanani',
+              title: 'Kacici-Kacici Mai Wahala',
               subtitle: 'Tambayoyi 20',
               icon: Icons.emoji_events,
               color: Theme.of(context).colorScheme.tertiary, // Deep blue

@@ -96,7 +96,7 @@ ${_stats.message}
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sakamakon Gwaji'),
+        title: const Text('Sakamakon Kacici-kacici'),
         automaticallyImplyLeading: false,
       ),
       body: SingleChildScrollView(
@@ -188,7 +188,7 @@ ${_stats.message}
                 Expanded(
                   child: _buildStatCard(
                     icon: Icons.check_circle,
-                    label: 'Daidai',
+                    label: 'An yi daidai',
                     value: '${_stats.correctAnswers}',
                     color: Colors.green,
                   ),
@@ -197,7 +197,7 @@ ${_stats.message}
                 Expanded(
                   child: _buildStatCard(
                     icon: Icons.cancel,
-                    label: 'Kuskure',
+                    label: 'Ba daidai bane',
                     value: '${_stats.wrongAnswers}',
                     color: Colors.red,
                   ),
@@ -233,7 +233,7 @@ ${_stats.message}
 
             _buildStatCard(
               icon: Icons.speed,
-              label: 'Matsakaicin Lokaci kowace Tambaya',
+              label: 'Matsakaicin Lokacin Kowace Tambaya',
               value: '${_stats.averageTime}s',
               color: Colors.purple,
             ),
@@ -355,17 +355,17 @@ ${_stats.message}
 
   String _getMotivationalMessage() {
     if (_stats.percentage >= 90) {
-      return 'Kai ƙwaro! Ka ƙware sosai a karin magana!';
+      return 'Sai ƙwarii! An ƙware sosai a karin magana!';
     } else if (_stats.percentage >= 80) {
-      return 'Masha Allah! Ka yi ƙoƙari sosai! Ci gaba da haka!';
+      return 'Masha Allah! An yi ƙoƙari sosai! Za\'a iya fin haka!';
     } else if (_stats.percentage >= 70) {
       return 'Ka yi ƙoƙari! Amma in kana da kyau to ka ƙara da wanka !';
     } else if (_stats.percentage >= 60) {
-      return 'Ba laifi! Amma zaka iya abinda ya fi haka!';
+      return 'Ba laifi! Amma za\'a iya abinda ya fi haka sosai!';
     } else if (_stats.percentage >= 50) {
-      return 'Ka fi wani wani ya fi ka! Amma ƙara yin nazari za ka yi nasara sosai!';
+      return 'Duniyar haka take tafiya: ka fi wani, wani ya fi ka! Amma a ƙara yin nazari za\'a yi nasara sosai!';
     } else {
-      return 'Kar ka damu! Ka ƙara gwadawa!';
+      return 'Kar a damu! A ƙara gwadawa!';
     }
   }
 }

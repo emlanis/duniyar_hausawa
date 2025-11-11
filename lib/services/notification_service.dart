@@ -139,7 +139,7 @@ class NotificationService {
     return prefs.getBool(_notificationsEnabledKey) ?? false;
   }
 
-  // Schedule daily proverb notification
+  // Schedule daily proverb notification - gets NEW random proverb each day
   Future<void> scheduleDailyProverb({int hour = 9, int minute = 0}) async {
     if (!_initialized) await initialize();
 
@@ -151,17 +151,20 @@ class NotificationService {
     // Save preferred time
     await prefs.setInt(_dailyProverbTimeKey, hour * 60 + minute);
 
-    // Get a random proverb
+    // Cancel existing notification to avoid duplicates
+    await _notifications.cancel(dailyProverbId);
+
+    // Get a NEW random proverb each time
     final db = DatabaseService.instance;
     final proverbs = await db.getRandomProverbs(1);
 
     if (proverbs.isEmpty) return;
     final proverb = proverbs.first;
 
-    // Schedule notification
+    // Schedule notification for today/tomorrow (NOT repeating - we'll reschedule daily)
     await _notifications.zonedSchedule(
       dailyProverbId,
-      'Karin Magana ta Yau 📚',
+      'Karin Maganarmu a Yau 📚',
       proverb.hausa,
       _nextInstanceOfTime(hour, minute),
       NotificationDetails(
@@ -182,12 +185,11 @@ class NotificationService {
       androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
       uiLocalNotificationDateInterpretation:
           UILocalNotificationDateInterpretation.absoluteTime,
-      matchDateTimeComponents: DateTimeComponents.time,
       payload: 'daily_proverb:${proverb.id}',
     );
   }
 
-  // Schedule quiz reminder notification
+  // Schedule quiz reminder notification - gets NEW random message each day
   Future<void> scheduleQuizReminder({int hour = 18, int minute = 0}) async {
     if (!_initialized) await initialize();
 
@@ -199,13 +201,21 @@ class NotificationService {
     // Save preferred time
     await prefs.setInt(_quizReminderTimeKey, hour * 60 + minute);
 
-    // Random quiz messages
+    // Cancel existing notification to avoid duplicates
+    await _notifications.cancel(quizReminderId);
+
+    // Attractive random quiz messages in corrected Hausa
     final messages = [
-      'Ka gwada kan ka yau! 🎯',
-      'Lokacin gwaji ne! Nawa za ka samu daidai?',
-      'Kacici-kacici yana jira! Ka zo ka gwada.',
-      'Ka tuna da karin magana a yau? Gwada!',
-      'Rage guda 5 ya rage! Ka gwada kacici-kacici.',
+      'Gwada ƙwarewarku a yau! Ko kun iya samun 100%? 🎯',
+      'Yane? Wane matsayi kuke ciki a gasar kacici-kacici? Ku gwada yanzu! 🏆',
+      'Kacici-kacici yana jiran ku! A zo a baje-kolin ilimi 💪',
+      'Lokacin koyo yayi! Gwada kacici-kacicin karin magana a yau 📚',
+      'Nawa kuke ga zaku iya amsawa daidai? Ku shiga kacici-kacici yanzu! ✨',
+      'Kun tuna da karin maganar da muka koya a yau? Ku zo mu gwada wasu! 🧠',
+      'Kuna ƙoƙari sosai! Ku zo mu sake gwada kacici-kacici dan ƙwarewa sosai 🎓',
+      'Gwanaye suna jiran ku! Ku shiga gasar kacici-kacici yanzu 🔥',
+      'Wata sabuwar karin magana tana jiran ku! Ku bude app ɗin 🌟',
+      'Ku gwada kacici-kacici kafin gari ya waye! 🌙',
     ];
 
     final random = Random();
@@ -234,7 +244,6 @@ class NotificationService {
       androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
       uiLocalNotificationDateInterpretation:
           UILocalNotificationDateInterpretation.absoluteTime,
-      matchDateTimeComponents: DateTimeComponents.time,
       payload: 'quiz_reminder',
     );
   }
@@ -296,6 +305,28 @@ class NotificationService {
     final prefs = await SharedPreferences.getInstance();
     final today = DateTime.now().toString().split(' ')[0];
     await prefs.setString(_lastStreakDateKey, today);
+  }
+
+  // Refresh daily notifications with new random content
+  // Call this when app opens to ensure fresh notifications each day
+  Future<void> refreshDailyNotifications() async {
+    final prefs = await SharedPreferences.getInstance();
+    final enabled = prefs.getBool(_notificationsEnabledKey) ?? false;
+
+    if (!enabled) return;
+
+    // Get saved notification times or use defaults
+    final proverbTime = prefs.getInt(_dailyProverbTimeKey) ?? (9 * 60); // 9:00 AM
+    final quizTime = prefs.getInt(_quizReminderTimeKey) ?? (18 * 60); // 6:00 PM
+
+    final proverbHour = proverbTime ~/ 60;
+    final proverbMinute = proverbTime % 60;
+    final quizHour = quizTime ~/ 60;
+    final quizMinute = quizTime % 60;
+
+    // Reschedule both notifications with fresh random content
+    await scheduleDailyProverb(hour: proverbHour, minute: proverbMinute);
+    await scheduleQuizReminder(hour: quizHour, minute: quizMinute);
   }
 
   // Send immediate test notification

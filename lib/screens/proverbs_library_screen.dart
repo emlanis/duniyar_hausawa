@@ -199,7 +199,7 @@ class _ProverbsLibraryScreenState extends State<ProverbsLibraryScreen> {
                   ),
                   const SizedBox(height: 16),
                   Text(
-                    'Babu karin magana da ya dace',
+                    'Babu karin maganar da ta dace a nan',
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
                       color: Colors.grey[600],
                     ),

@@ -94,12 +94,12 @@ class _RunbunHotunaScreenState extends State<RunbunHotunaScreen> {
                   scrollDirection: Axis.horizontal,
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   children: [
-                    _buildCategoryChip('all', 'Duka', Icons.grid_view),
+                    _buildCategoryChip('all', 'Gaba ɗaya', Icons.grid_view),
                     _buildCategoryChip('animals', 'Dabbobi', Icons.pets),
                     _buildCategoryChip('food', 'Abinci', Icons.restaurant),
                     _buildCategoryChip('traditional', 'Gargajiya', Icons.account_balance),
                     _buildCategoryChip('plants', 'Tsire-tsire', Icons.eco),
-                    _buildCategoryChip('cities', 'Biranen', Icons.location_city),
+                    _buildCategoryChip('cities', 'Birane', Icons.location_city),
                   ],
                 ),
               ),
@@ -120,7 +120,7 @@ class _RunbunHotunaScreenState extends State<RunbunHotunaScreen> {
                   ),
                   const SizedBox(height: 16),
                   Text(
-                    'Ba a sami hoto',
+                    'Ba a sami hoto ba',
                     style: TextStyle(
                       color: Colors.grey[600],
                       fontSize: 18,
@@ -137,7 +137,7 @@ class _RunbunHotunaScreenState extends State<RunbunHotunaScreen> {
                   child: Row(
                     children: [
                       Text(
-                        '${_filteredItems.length} hotuna',
+                        'hotuna ${_filteredItems.length}',
                         style: const TextStyle(
                           color: Colors.white70,
                           fontSize: 14,

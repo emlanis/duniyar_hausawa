@@ -86,11 +86,11 @@ class _PhotoQuizResultsScreenState extends State<PhotoQuizResultsScreen>
 📸 Duniyar Hausawa - ${widget.category.hausaName}
 
 Tambayoyi: ${_stats.totalQuestions}
-Daidai: ${_stats.correctAnswers} ✅
-Kuskure: ${_stats.wrongAnswers} ❌
+An yi daidai: ${_stats.correctAnswers} ✅
+Ba daidai bane: ${_stats.wrongAnswers} ❌
 Maki: ${_stats.percentage}%
 Daraja: ${_stats.grade}
-Jere mafi girma: ${widget.maxStreak} 🔥
+Amsa tambayoyi a jere mafi yawa: ${widget.maxStreak} 🔥
 
 ${_stats.message}
 ''';
@@ -127,7 +127,7 @@ ${_stats.message}
       appBar: AppBar(
         backgroundColor: const Color(0xFF1E1E1E),
         title: const Text(
-          'Sakamakon Gwaji',
+          'Sakamakon Kacici-kacici',
           style: TextStyle(color: Color(0xFFFFB300)),
         ),
         automaticallyImplyLeading: false,

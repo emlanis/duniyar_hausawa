@@ -86,7 +86,7 @@ class _QuizHistoryScreenState extends State<QuizHistoryScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Tarihin Gwaje-gwaje'),
+        title: const Text('Tarihin Kacici-kacici'),
         centerTitle: true,
         bottom: TabBar(
           controller: _tabController,
@@ -131,7 +131,7 @@ class _QuizHistoryScreenState extends State<QuizHistoryScreen>
             children: [
               Expanded(
                 child: _buildStatCard(
-                  'Jimillar Gwaje-gwaje',
+                  'Jimillar Kacici-kacici',
                   '$_totalQuizzes',
                   Icons.quiz,
                   Theme.of(context).primaryColor,
@@ -224,7 +224,7 @@ class _QuizHistoryScreenState extends State<QuizHistoryScreen>
             ),
             const SizedBox(height: 16),
             Text(
-              'Ba ka yi gwajin karin magana tukuna',
+              'Ai ba\'a gwada kacici-kacicin karin magana ba',
               style: TextStyle(
                 fontSize: 16,
                 color: Colors.grey[400],
@@ -233,7 +233,7 @@ class _QuizHistoryScreenState extends State<QuizHistoryScreen>
             ),
             const SizedBox(height: 8),
             Text(
-              'Ka fara gwaji don ganin ci gaban ka!',
+              'A fara gasar kacici-kacici dan ganin ci gaban ku!',
               style: TextStyle(
                 fontSize: 14,
                 color: Colors.grey[500],
@@ -266,19 +266,19 @@ class _QuizHistoryScreenState extends State<QuizHistoryScreen>
     if (score >= 80) {
       scoreColor = Colors.green;
       scoreIcon = Icons.emoji_events;
-      scoreLabel = 'Maƙwarai!';
+      scoreLabel = 'Kai ƙwaro! Ko Farfesan Hausa ne bamu sani ba?';
     } else if (score >= 60) {
       scoreColor = Colors.blue;
       scoreIcon = Icons.thumb_up;
-      scoreLabel = 'Mai kyau!';
+      scoreLabel = 'Ka yi Ƙoƙari!';
     } else if (score >= 40) {
       scoreColor = Colors.orange;
       scoreIcon = Icons.trending_up;
-      scoreLabel = 'Ci gaba!';
+      scoreLabel = 'Cigaba da Ƙoƙartawa!';
     } else {
       scoreColor = Colors.red;
       scoreIcon = Icons.school;
-      scoreLabel = 'Ka ƙara ƙoƙari!';
+      scoreLabel = 'Ka Ƙara Ƙoƙari! Mun san zaka fi haka!';
     }
 
     return Card(
@@ -320,12 +320,16 @@ class _QuizHistoryScreenState extends State<QuizHistoryScreen>
                       children: [
                         Icon(scoreIcon, color: scoreColor, size: 18),
                         const SizedBox(width: 6),
-                        Text(
-                          scoreLabel,
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: scoreColor,
+                        Flexible(
+                          child: Text(
+                            scoreLabel,
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: scoreColor,
+                            ),
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
                           ),
                         ),
                       ],
@@ -374,7 +378,7 @@ class _QuizHistoryScreenState extends State<QuizHistoryScreen>
             ),
             const SizedBox(height: 16),
             Text(
-              'Ba ka yi gwajin hotuna tukuna',
+              'Ba\'a yi kacici-kacicin hotuna ba',
               style: TextStyle(
                 fontSize: 16,
                 color: Colors.grey[400],
@@ -383,7 +387,7 @@ class _QuizHistoryScreenState extends State<QuizHistoryScreen>
             ),
             const SizedBox(height: 8),
             Text(
-              'Ka fara gwaji don ganin ci gaban ka!',
+              'A fara gasar kacici-kacici dan ganin ci gaban ku!',
               style: TextStyle(
                 fontSize: 14,
                 color: Colors.grey[500],
@@ -420,19 +424,19 @@ class _QuizHistoryScreenState extends State<QuizHistoryScreen>
     if (score >= 80) {
       scoreColor = Colors.green;
       scoreIcon = Icons.emoji_events;
-      scoreLabel = 'Maƙwarai!';
+      scoreLabel = 'Kai ƙwaro! Ko Farfesan Hausa ne bamu sani ba?';
     } else if (score >= 60) {
       scoreColor = Colors.blue;
       scoreIcon = Icons.thumb_up;
-      scoreLabel = 'Mai kyau!';
+      scoreLabel = 'Ka yi Ƙoƙari!';
     } else if (score >= 40) {
       scoreColor = Colors.orange;
       scoreIcon = Icons.trending_up;
-      scoreLabel = 'Ci gaba!';
+      scoreLabel = 'Cigaba da Ƙoƙartawa!';
     } else {
       scoreColor = Colors.red;
       scoreIcon = Icons.school;
-      scoreLabel = 'Ka ƙara ƙoƙari!';
+      scoreLabel = 'Ka Ƙara Ƙoƙari! Mun san zaka fi haka!';
     }
 
     return Card(
@@ -474,12 +478,16 @@ class _QuizHistoryScreenState extends State<QuizHistoryScreen>
                     children: [
                       Icon(scoreIcon, color: scoreColor, size: 18),
                       const SizedBox(width: 6),
-                      Text(
-                        scoreLabel,
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: scoreColor,
+                      Flexible(
+                        child: Text(
+                          scoreLabel,
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: scoreColor,
+                          ),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
                     ],
@@ -531,7 +539,7 @@ class _QuizHistoryScreenState extends State<QuizHistoryScreen>
             _buildDetailRow('Maki:', '$score%', score >= 70 ? Colors.green : Colors.orange),
             const Divider(),
             _buildDetailRow('Daidai:', '${quiz.correctAnswers}', Colors.green),
-            _buildDetailRow('Kuskure:', '${quiz.totalQuestions - quiz.correctAnswers}', Colors.red),
+            _buildDetailRow('Ba daidai bane:', '${quiz.totalQuestions - quiz.correctAnswers}', Colors.red),
             _buildDetailRow('Jimillar Tambayoyi:', '${quiz.totalQuestions}', Colors.blue),
             const Divider(),
             _buildDetailRow('Ranar:', date, Theme.of(context).primaryColor),
@@ -569,7 +577,7 @@ class _QuizHistoryScreenState extends State<QuizHistoryScreen>
             _buildDetailRow('Maki:', '$score%', score >= 70 ? Colors.green : Colors.orange),
             const Divider(),
             _buildDetailRow('Daidai:', '$correct', Colors.green),
-            _buildDetailRow('Kuskure:', '${total - correct}', Colors.red),
+            _buildDetailRow('Ba daidai bane:', '${total - correct}', Colors.red),
             _buildDetailRow('Jimillar Tambayoyi:', '$total', Colors.blue),
             const Divider(),
             _buildDetailRow('Nau\'i:', category, Colors.purple),

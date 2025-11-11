@@ -89,7 +89,7 @@ class PhotoQuizSetupScreen extends StatelessWidget {
             const SizedBox(height: 24),
 
             Text(
-              'Zaɓi yawan tambayoyin',
+              'A zaɓi yawan tambayoyin da ake so',
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
                 color: const Color(0xFFFFB300),
                 fontWeight: FontWeight.bold,

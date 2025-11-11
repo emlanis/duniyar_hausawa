@@ -83,11 +83,11 @@ class PhotoQuizCategory {
     return [
       PhotoQuizCategory(
         id: 'cities',
-        hausaName: 'Biranen Hausawa',
+        hausaName: 'Biranen Hausawa da Najeriya',
         englishName: 'Hausa Cities',
         icon: '🏙️',
         color: 0xFF2196F3,
-        description: 'Gano biranen Hausawa masu tarihi',
+        description: 'Gano biranen Hausawa masu tarihi dama wasu biranen a Najeriya',
       ),
       PhotoQuizCategory(
         id: 'animals',
@@ -95,7 +95,7 @@ class PhotoQuizCategory {
         englishName: 'Animals',
         icon: '🐑',
         color: 0xFF4CAF50,
-        description: 'Koyi sunayen dabbobi cikin Hausa',
+        description: 'Koyi sunayen dabbobi da Hausa',
       ),
       PhotoQuizCategory(
         id: 'food',
@@ -103,7 +103,7 @@ class PhotoQuizCategory {
         englishName: 'Food',
         icon: '🍲',
         color: 0xFFF44336,
-        description: 'Abincin gargajiyar Hausawa',
+        description: 'Abinci a ƙasar Hausa',
       ),
       PhotoQuizCategory(
         id: 'traditional',
@@ -111,7 +111,7 @@ class PhotoQuizCategory {
         englishName: 'Traditional Items',
         icon: '🎭',
         color: 0xFF9C27B0,
-        description: 'Kayan al\'adun Hausawa na dā',
+        description: 'Kayan al\'adun Hausawa na da dana yanzu',
       ),
       PhotoQuizCategory(
         id: 'plants',
@@ -119,7 +119,7 @@ class PhotoQuizCategory {
         englishName: 'Plants',
         icon: '🌳',
         color: 0xFF009688,
-        description: 'Tsire-tsire da \'ya\'yan itatuwa',
+        description: 'Tsire-tsire da ƴaƴan itatuwa',
       ),
     ];
   }

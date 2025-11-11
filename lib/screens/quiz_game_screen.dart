@@ -276,7 +276,7 @@ class _QuizGameScreenState extends State<QuizGameScreen> with TickerProviderStat
             children: [
               CircularProgressIndicator(),
               SizedBox(height: 16),
-              Text('Ana shirya tambayoyi...'),
+              Text('Tambayoyi na nan zuwa...'),
             ],
           ),
         ),
@@ -294,8 +294,8 @@ class _QuizGameScreenState extends State<QuizGameScreen> with TickerProviderStat
         final shouldPop = await showDialog<bool>(
           context: context,
           builder: (context) => AlertDialog(
-            title: const Text('Bar gwaji?'),
-            content: const Text('Ka tabbata kana son barin wannan gwaji?'),
+            title: const Text('An fasa yin kacici-kacicin?'),
+            content: const Text('Shin an tabbata ka fasa yin kacici-kacicin?'),
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context, false),
@@ -303,7 +303,7 @@ class _QuizGameScreenState extends State<QuizGameScreen> with TickerProviderStat
               ),
               TextButton(
                 onPressed: () => Navigator.pop(context, true),
-                child: const Text('I'),
+                child: const Text('Na\'am'),
               ),
             ],
           ),
@@ -377,13 +377,13 @@ class _QuizGameScreenState extends State<QuizGameScreen> with TickerProviderStat
                           children: [
                             _buildScoreBadge(
                               icon: Icons.check_circle,
-                              label: 'Daidai',
+                              label: 'An yi daidai',
                               value: '$_correctAnswers',
                               color: const Color(0xFF81C784), // Light green
                             ),
                             _buildScoreBadge(
                               icon: Icons.cancel,
-                              label: 'Kuskure',
+                              label: 'Ba daidai bane',
                               value: '${_currentQuestionIndex - _correctAnswers}',
                               color: Colors.red,
                             ),
@@ -427,7 +427,7 @@ class _QuizGameScreenState extends State<QuizGameScreen> with TickerProviderStat
                                 ),
                                 const SizedBox(width: 8),
                                 Text(
-                                  'Ci gaba haka! $_currentStreak daidai a jere',
+                                  'Ci gaba da gashi $_currentStreak daidai a jere',
                                   style: TextStyle(
                                     color: _currentStreak >= 3
                                         ? Colors.black

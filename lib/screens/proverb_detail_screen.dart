@@ -42,7 +42,7 @@ class _ProverbDetailScreenState extends State<ProverbDetailScreen> {
         SnackBar(
           content: Text(
             newFavoriteStatus
-                ? 'An ƙara zuwa abubuwan da ka fi so'
+                ? 'An ƙara ajewa a abubuwan da ka fi so'
                 : 'An cire daga abubuwan da ka fi so',
           ),
           duration: const Duration(seconds: 2),
@@ -55,7 +55,7 @@ class _ProverbDetailScreenState extends State<ProverbDetailScreen> {
     Clipboard.setData(ClipboardData(text: _proverb.hausa));
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
-        content: Text('An kwafi karin magana!'),
+        content: Text('Karin magana ta kwafu!'),
         duration: Duration(seconds: 2),
       ),
     );
@@ -65,7 +65,7 @@ class _ProverbDetailScreenState extends State<ProverbDetailScreen> {
     // TODO: Implement audio playback
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
-        content: Text('Sauraron murya yana zuwa nan gaba!'),
+        content: Text('Sautin murya yana kan hanya zaizo nan gaba!'),
         duration: Duration(seconds: 2),
       ),
     );
@@ -82,12 +82,12 @@ class _ProverbDetailScreenState extends State<ProverbDetailScreen> {
               _proverb.isFavorite ? Icons.favorite : Icons.favorite_border,
             ),
             onPressed: _toggleFavorite,
-            tooltip: 'Ƙara zuwa abubuwan da ka fi so',
+            tooltip: 'An aje a abubuwan da ka fi so',
           ),
           IconButton(
             icon: const Icon(Icons.share),
             onPressed: _shareProverb,
-            tooltip: 'Raba',
+            tooltip: 'Tura ma wasu',
           ),
         ],
       ),
@@ -308,7 +308,7 @@ class _ProverbDetailScreenState extends State<ProverbDetailScreen> {
       case 'medium':
         return 'Matsakaici';
       case 'hard':
-        return 'Wuya';
+        return 'Mai Wuya';
       default:
         return 'Matsakaici';
     }

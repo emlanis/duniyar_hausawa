@@ -94,7 +94,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
       children: [
         _buildSubsection(
           '1. Tattara Bayanai',
-          'Duniyar Hausawa ba ya tattara ko aika bayanan ku zuwa wani sabar. Duk bayananku suna adanawa a cikin na\'urar ku kawai.',
+          'Duniyar Hausawa ba ta tattara ko aika bayanan ku zuwa wani sabar. Duk bayananku suna ajjiye a cikin na\'urar ku kawai.',
         ),
         _buildSubsection(
           '2. Bayanan da Ake Adanawa',
@@ -110,15 +110,15 @@ class PrivacyPolicyScreen extends StatelessWidget {
         ),
         _buildSubsection(
           '4. Tsaro',
-          'Bayananku suna cikin aminci saboda suna adanawa a cikin na\'urar ku. SQLite database da SharedPreferences sune muke amfani dasu.',
+          'Bayananku suna cikin aminci saboda suna ajjiye a cikin na\'urar ku. SQLite database da SharedPreferences sune muke amfani dasu.',
         ),
         _buildSubsection(
           '5. Hakkin ku',
-          'Kuna da ikon share ko gyara duk bayanan da kuka adana ta hanyar share manhaja.',
+          'Kuna da ikon turawa ko gyara duk bayanan da kuka ajjiye ta hanyar share manhaja.',
         ),
         _buildSubsection(
           '6. Internet',
-          'Wannan manhaja ba ya buƙatar internet. Duk ayyukan suna aiki ba tare da haɗi ba.',
+          'Wannan manhaja ba ta buƙatar internet. Mafi yawancin sassan da muke dasu suna aiki ba tare da Intanet data ba',
         ),
       ],
     );

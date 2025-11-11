@@ -48,7 +48,7 @@ class PhotoQuizScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 16),
                     Text(
-                      'Gwajin Hotuna',
+                      'Kacici-Kacicin Hotuna',
                       style: Theme.of(context).textTheme.headlineMedium?.copyWith(
                         color: Colors.black87,
                         fontWeight: FontWeight.bold,
@@ -57,7 +57,7 @@ class PhotoQuizScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 8),
                     Text(
-                      'Zaɓi nau\'in hoton da kake son gwada',
+                      'Zaɓi nau\'in hoton da kake son gwadawa',
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                         color: Colors.black87,
                       ),

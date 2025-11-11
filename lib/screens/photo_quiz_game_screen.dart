@@ -245,7 +245,7 @@ class _PhotoQuizGameScreenState extends State<PhotoQuizGameScreen> with TickerPr
               CircularProgressIndicator(color: Color(0xFFFFB300)),
               SizedBox(height: 16),
               Text(
-                'Ana shirya tambayoyi...',
+                'Tambayoyi na nan zuwa...',
                 style: TextStyle(color: Colors.white70),
               ),
             ],
@@ -266,9 +266,9 @@ class _PhotoQuizGameScreenState extends State<PhotoQuizGameScreen> with TickerPr
           context: context,
           builder: (context) => AlertDialog(
             backgroundColor: const Color(0xFF1E1E1E),
-            title: const Text('Bar gwaji?', style: TextStyle(color: Color(0xFFFFB300))),
+            title: const Text('An fasa yin kacici-kacicin?', style: TextStyle(color: Color(0xFFFFB300))),
             content: const Text(
-              'Ka tabbata kana son barin wannan gwaji?',
+              'Shin an tabbata ka fasa yin kacici-kacicin?',
               style: TextStyle(color: Colors.white70),
             ),
             actions: [
@@ -278,7 +278,7 @@ class _PhotoQuizGameScreenState extends State<PhotoQuizGameScreen> with TickerPr
               ),
               TextButton(
                 onPressed: () => Navigator.pop(context, true),
-                child: const Text('I', style: TextStyle(color: Color(0xFFFFB300))),
+                child: const Text('Na\'am', style: TextStyle(color: Color(0xFFFFB300))),
               ),
             ],
           ),
@@ -355,7 +355,7 @@ class _PhotoQuizGameScreenState extends State<PhotoQuizGameScreen> with TickerPr
                             Expanded(
                               child: _buildScoreBadge(
                                 icon: Icons.check_circle,
-                                label: 'Daidai',
+                                label: 'An yi daidai',
                                 value: '$_correctAnswers',
                                 color: Colors.green,
                               ),
@@ -364,7 +364,7 @@ class _PhotoQuizGameScreenState extends State<PhotoQuizGameScreen> with TickerPr
                             Expanded(
                               child: _buildScoreBadge(
                                 icon: Icons.cancel,
-                                label: 'Kuskure',
+                                label: 'Ba daidai bane',
                                 value: '${_currentQuestionIndex - _correctAnswers}',
                                 color: Colors.red,
                               ),
@@ -388,7 +388,7 @@ class _PhotoQuizGameScreenState extends State<PhotoQuizGameScreen> with TickerPr
                                   ),
                                   const SizedBox(width: 8),
                                   Text(
-                                    'Ci gaba haka! $_currentStreak daidai a jere',
+                                    'Cigaba da gashi! $_currentStreak daidai a jere',
                                     style: const TextStyle(
                                       color: Color(0xFFFFB300),
                                       fontWeight: FontWeight.bold,
@@ -483,7 +483,7 @@ class _PhotoQuizGameScreenState extends State<PhotoQuizGameScreen> with TickerPr
 
                         // Question Text
                         Text(
-                          'Mene ne sunan wannan?',
+                          'Wannan hoton menene?',
                           style: Theme.of(context).textTheme.titleLarge?.copyWith(
                             color: const Color(0xFFFFB300),
                             fontWeight: FontWeight.bold,
@@ -558,7 +558,7 @@ class _PhotoQuizGameScreenState extends State<PhotoQuizGameScreen> with TickerPr
                 ),
                 const SizedBox(height: 8),
                 const Text(
-                  'Hoton ba ya samuwa',
+                  'Babu hoton nan',
                   style: TextStyle(
                     color: Colors.white70,
                     fontSize: 14,

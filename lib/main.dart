@@ -22,6 +22,9 @@ void main() async {
   // Mark today as visited (for streak tracking)
   await notificationService.markTodayAsVisited();
 
+  // Refresh notifications with new random content each day
+  await notificationService.refreshDailyNotifications();
+
   runApp(const DuniyarHausawaApp());
 }
 

@@ -63,7 +63,7 @@ class _RunbunHotunaDetailScreenState extends State<RunbunHotunaDetailScreen> {
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
-              content: Text('An cire daga abubuwan da ka fi so'),
+              content: Text('Yanzu baya daga jerin abubuwan da aka fi so'),
               backgroundColor: Colors.grey,
               duration: Duration(seconds: 2),
             ),
@@ -85,7 +85,7 @@ class _RunbunHotunaDetailScreenState extends State<RunbunHotunaDetailScreen> {
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
-              content: Text('An adana a cikin abubuwan da ka fi so ❤️'),
+              content: Text('An adana a cikin jerin abubuwan da aka fi so ❤️'),
               backgroundColor: Colors.red,
               duration: Duration(seconds: 2),
             ),
@@ -96,7 +96,7 @@ class _RunbunHotunaDetailScreenState extends State<RunbunHotunaDetailScreen> {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-            content: Text('Kuskure! Sake gwadawa'),
+            content: Text('Ba daidai bane! Sake gwadawa'),
             backgroundColor: Colors.orange,
           ),
         );
@@ -259,7 +259,7 @@ class _RunbunHotunaDetailScreenState extends State<RunbunHotunaDetailScreen> {
 
                   // Related Proverbs Section
                   _buildSectionHeader(
-                    'Karin Magana masu Alaka',
+                    'Karin Magana mai alaƙa da ${widget.item.hausaName}',
                     Icons.format_quote,
                   ),
                   const SizedBox(height: 12),
@@ -287,7 +287,7 @@ class _RunbunHotunaDetailScreenState extends State<RunbunHotunaDetailScreen> {
                             ),
                             const SizedBox(height: 12),
                             Text(
-                              'Ba a sami karin magana masu alaka da "${widget.item.hausaName}"',
+                              'Ba a sami Karin Magana mai alaƙa da "${widget.item.hausaName}" ba!',
                               style: TextStyle(
                                 color: Colors.grey[600],
                                 fontSize: 15,
@@ -312,7 +312,7 @@ class _RunbunHotunaDetailScreenState extends State<RunbunHotunaDetailScreen> {
                             borderRadius: BorderRadius.circular(20),
                           ),
                           child: Text(
-                            '${_relatedProverbs.length} karin magana',
+                            'Karin Magana ${_relatedProverbs.length}',
                             style: const TextStyle(
                               color: Color(0xFFFFB300),
                               fontSize: 14,
@@ -346,12 +346,14 @@ class _RunbunHotunaDetailScreenState extends State<RunbunHotunaDetailScreen> {
           size: 24,
         ),
         const SizedBox(width: 8),
-        Text(
-          title,
-          style: const TextStyle(
-            color: Color(0xFFFFB300),
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
+        Flexible(
+          child: Text(
+            title,
+            style: const TextStyle(
+              color: Color(0xFFFFB300),
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ],
@@ -398,7 +400,7 @@ class _RunbunHotunaDetailScreenState extends State<RunbunHotunaDetailScreen> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Text(
-                    'Matsa don cikakken bayani',
+                    'Danna dan samun cikakken bayani',
                     style: TextStyle(
                       color: Colors.grey[600],
                       fontSize: 12,
